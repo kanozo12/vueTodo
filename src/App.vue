@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <div class="logo">
-      <img src="./assets/logo.png" />
-      <h2>Gondr Calendar</h2>
+      <img src="./assets/calendar.png" width="150px" height="150px">
+      <h2>Kanozo Calendar</h2>
     </div>
     <div class="button-row">
-      <button @click="prev">이전</button>
+      <a href="#" @click="prev" class="prev-btn">Prev</a>
+
       <div class="month-label">{{current.getMonth() + 1}} 월</div>
-      <button @click="next">다음</button>
+
+      <a href="#" @click="next" class="next-btn">Next</a>
     </div>
     <div class="calendar">
       <div class="wrapper">
@@ -29,17 +31,20 @@
         >{{day}}</day>
       </div>
     </div>
-
-    <div id="popup" v-if="popupOpen">
-      <div class="inner">
-        <div class="form-group">
-          <input v-model="todoTitle" type="text" placeholder="할 일을 입력하세요" />
-          <textarea v-model="todoContent" placeholder="상세한 내용을 입력하세요"></textarea>
-          <button type="button" @click="saveTodo">입력</button>
-          <button type="button" @click="popupOpen = false">닫기</button>
+    <transition name="fade">
+      <div id="popup" v-if="popupOpen">
+        <div class="inner">
+          <div class="form-group">
+            <input v-model="todoTitle" type="text" placeholder="할 일을 입력하세요" />
+            <textarea v-model="todoContent" placeholder="상세한 내용을 입력하세요"></textarea>
+          
+            <a href="#" @click="saveTodo" class="prev-btn">Input</a>
+            <a href="#" @click="popupOpen = false" class="next-btn">Close</a>
+            
+          </div>
         </div>
       </div>
-    </div>
+    <transition>
   </div>
 </template>
 
@@ -147,13 +152,55 @@ export default {
   justify-content: space-between;
 }
 
+.prev-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #00aaff;
+  border: solid 2px #00aaff;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.prev-btn:hover {
+  background: #00aaff;
+  color: white;
+}
+
+.next-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ff4040;
+  border: 2px solid #ff4040;
+  border-radius: 3px;
+  transition: 0.4s;
+}
+
+.next-btn:hover {
+  background: #ff4040;
+  color: white;
+}
+
 .month-label {
   font-size: 25px;
 }
 .calendar {
   width: 100%;
+  height: 700px;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 .wrapper {
