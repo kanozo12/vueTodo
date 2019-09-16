@@ -37,7 +37,12 @@
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
-        box-shadow: 2px 2px 1px 1px #ddd;
+        /* box-shadow: 2px 2px 1px 1px #ddd; */
+        border-right: 1px solid #808080;
+    }
+
+    .day:first-child {
+        border-left: 1px solid #808080;
     }
 
     .date {

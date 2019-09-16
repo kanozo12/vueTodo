@@ -10,6 +10,15 @@
       <button @click="next">다음</button>
     </div>
     <div class="calendar">
+      <div class="wrapper">
+        <div class="mon">일</div>
+        <div class="mon">월</div>
+        <div class="mon">화</div>
+        <div class="mon">수</div>
+        <div class="mon">목</div>
+        <div class="mon">금</div>
+        <div class="mon">토</div>
+      </div>
       <div v-for="week in dayList" class="week">
         <day
           v-for="day in week"
@@ -132,7 +141,7 @@ export default {
   flex-direction: column;
 }
 .button-row {
-  width: 80%;
+  width: 1000px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -142,16 +151,55 @@ export default {
   font-size: 25px;
 }
 .calendar {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 20px;
 }
-.week {
+
+.wrapper {
   display: grid;
-  grid-gap: 10px;
-  margin-bottom: 10px;
+  width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: minmax(40px, auto);
+}
+
+.mon {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mon {
+  border-bottom: 1px solid #808080;
+}
+
+.mon:first-child {
+  color: red;
+}
+
+.mon:last-child {
+  color: blue;
+}
+
+.week {
+  width: 1000px;
+  display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: minmax(120px, auto);
+  margin: 0 auto;
+  border-bottom: 1px solid #808080;
+}
+
+.day:first-child {
+  background-color: #d3d3d3;
+  color: red;
+}
+
+.day:last-child {
+  background-color: #d3d3d3;
+  color: blue;
 }
 
 #popup {
