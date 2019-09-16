@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="logo">
-      <img src="./assets/calendar.png" width="150px" height="150px">
+      <img src="./assets/calendar.png" width="150px" height="150px" />
       <h2>Kanozo Calendar</h2>
     </div>
     <div class="button-row">
@@ -37,14 +37,14 @@
           <div class="form-group">
             <input v-model="todoTitle" type="text" placeholder="할 일을 입력하세요" />
             <textarea v-model="todoContent" placeholder="상세한 내용을 입력하세요"></textarea>
-          
-            <a href="#" @click="saveTodo" class="prev-btn">Input</a>
-            <a href="#" @click="popupOpen = false" class="next-btn">Close</a>
-            
+            <div class="btn-group">
+              <a href="#" @click="saveTodo" class="prev-btn">Input</a>
+              <a href="#" @click="popupOpen = false" class="next-btn">Close</a>
+            </div>
           </div>
         </div>
       </div>
-    <transition>
+    </transition>
   </div>
 </template>
 
@@ -196,10 +196,12 @@ export default {
   margin-top: 20px;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.7s;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
